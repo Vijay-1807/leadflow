@@ -1,4 +1,7 @@
-fastapi
-uvicorn
-sqlalchemy
-python-dotenv
+__pycache__/
+*.pyc
+*.db
+*.sqlite*
+.env
+.venv/
+venv/

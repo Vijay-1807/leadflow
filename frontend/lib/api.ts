@@ -138,6 +138,18 @@ export function formatFull(iso: string): string {
   );
 }
 
+/** Countdown copy: "in 2h 15m" / "3h 10m ago" for a follow-up instant. */
+export function untilFollowUp(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const diff = new Date(iso).getTime() - Date.now();
+  const abs = Math.abs(diff);
+  if (abs < 60_000) return "due now";
+  const h = Math.floor(abs / 3_600_000);
+  const m = Math.floor((abs % 3_600_000) / 60_000);
+  const unit = h > 0 ? `${h}h ${m}m` : `${m}m`;
+  return diff >= 0 ? `in ${unit}` : `${unit} ago`;
+}
+
 export function initials(name: string): string {
   return name
     .split(" ")
@@ -162,11 +174,15 @@ export function avatarGradient(name: string): string {
   return AVATAR_GRADIENTS[h % AVATAR_GRADIENTS.length];
 }
 
-export const STATUS_STYLE: Record<LeadStatus, string> = {
-  New: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  Contacted: "bg-amber-50 text-amber-800 border-amber-200",
-  Qualified: "bg-blue-50 text-blue-700 border-blue-200",
-  "Proposal Sent": "bg-violet-50 text-violet-700 border-violet-200",
-  Won: "bg-teal-600 text-white border-teal-600",
-  Lost: "bg-slate-100 text-slate-500 border-slate-200",
+const STATUS_CLASS: Record<LeadStatus, string> = {
+  New: "badge-new",
+  Contacted: "badge-contacted",
+  Qualified: "badge-qualified",
+  "Proposal Sent": "badge-proposal",
+  Won: "badge-won",
+  Lost: "badge-lost",
 };
+
+export function statusClass(status: string): string {
+  return STATUS_CLASS[status as LeadStatus] ?? "badge-lost";
+}

@@ -1,0 +1,26 @@
+# brief assets (keep out of submission repo)
+*.png
+*.pdf
+
+# python
+__pycache__/
+*.py[cod]
+*.db
+*.sqlite*
+.venv/
+venv/
+.env
+.env.local
+
+# node
+node_modules/
+.next/
+out/
+*.log
+
+# docker
+leadflow-data/
+
+# OS
+.DS_Store
+Thumbs.db

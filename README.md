@@ -27,11 +27,18 @@ Single-screen Lead Management tool: track leads, log every discussion, and never
 - [x] Status filters with live counts (`All / New / Contacted / Qualified / Proposal Sent / Won / Lost`)
 
 **UX extras (to stand out)**
-- Stats bar: Total · Due today · Overdue · Won rate
-- Avatar initials with deterministic gradients, hover-lift cards
-- Loading skeletons, empty states, error state with retry, toasts
-- Sticky glass header, responsive (mobile search included)
-- Timeline with vertical rail, follow-up chips, date+time picker
+- Design system in `globals.css`: tokens (color/elevation/motion/radius), expo easings, layered shadows
+- Stats bar with **animated count-up** numbers: Total · Due today · Overdue · Won rate
+- Staggered list entrance, card hover lift + growing accent bar, avatar micro-tilt
+- Dialogs: blurred backdrop, desktop scale-in / mobile bottom-sheet, focus trap, scroll lock
+- Timeline: animated rail draw, pulsing "latest" dot, slide-in items, latest badge
+- Composer: animated follow-up switch, char counter, `Ctrl/⌘ + Enter` to save
+- Status dropdown with animated menu; shake-on-invalid in Add Lead; Enter to submit
+- Shimmer skeletons (not pulse), refined empty/error states, auto-dismiss toast with progress bar
+- Keyboard shortcuts: `/` search · `n` new lead · `Esc` close dialogs
+- Responsive: mobile bottom sheets, scrollable filter pills, 2-col stats, touch-sized targets
+- A11y: focus-visible rings, aria labels/live regions, `prefers-reduced-motion` support
+- Sticky glass header with live status dot; deterministic avatar gradients
 
 ---
 
@@ -50,11 +57,13 @@ Single-screen Lead Management tool: track leads, log every discussion, and never
 │   └── .env.example
 ├── frontend/
 │   ├── app/page.tsx      # single-screen app
-│   ├── app/layout.tsx / globals.css
+│   ├── app/layout.tsx / globals.css   # design system: tokens, motion, components
 │   ├── components/LeadCard.tsx
 │   ├── components/TimelineDialog.tsx
 │   ├── components/AddLeadDialog.tsx
+│   ├── components/Modal.tsx           # shared dialog shell (focus trap, sheet-on-mobile)
 │   ├── lib/api.ts        # typed client + time helpers
+│   ├── lib/hooks.ts      # useCountUp, useDebounced
 │   ├── Dockerfile
 │   └── .env.example
 ├── docker-compose.yml

@@ -17,6 +17,8 @@ node_modules/
 .next/
 out/
 *.log
+frontend-dev.log
+AGENTS.md
 
 # docker
 leadflow-data/

@@ -229,7 +229,6 @@ export default function Home() {
               <Plus className="h-4 w-4" strokeWidth={2.6} />
               <span className="hidden sm:inline">Add new lead</span>
               <span className="sm:hidden">Add</span>
-              <kbd className="hidden bg-white/15 !text-white/80 !border-white/20 lg:inline-block">n</kbd>
             </button>
           </div>
         </div>

@@ -22,9 +22,12 @@ function FollowUpChip({ lead }: { lead: Lead }) {
   const overdue = isOverdue(lead.follow_up_at, lead.status);
   const today = isToday(lead.follow_up_at);
   const delta = untilFollowUp(lead.follow_up_at);
+  const timeOnly = new Date(lead.follow_up_at).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
   const label = overdue
     ? `Overdue · ${formatFollowUp(lead.follow_up_at)}`
-    : `${today ? "Today" : "Follow-up"} · ${formatFollowUp(lead.follow_up_at)}`;
+    : today
+      ? `Today · ${timeOnly}`
+      : `Follow-up · ${formatFollowUp(lead.follow_up_at)}`;
   return (
     <span className={`chip ${overdue ? "chip-danger" : today ? "chip-brand" : "chip-quiet"}`}>
       <BellRing className="h-3 w-3" />

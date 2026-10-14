@@ -160,12 +160,12 @@ export function initials(name: string): string {
 }
 
 const AVATAR_GRADIENTS = [
-  "from-blue-500 to-indigo-600",
-  "from-violet-500 to-purple-600",
-  "from-emerald-500 to-teal-600",
-  "from-amber-500 to-orange-600",
-  "from-rose-500 to-pink-600",
-  "from-cyan-500 to-blue-600",
+  "linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%)",
+  "linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)",
+  "linear-gradient(135deg, #10b981 0%, #0d9488 100%)",
+  "linear-gradient(135deg, #f59e0b 0%, #ea580c 100%)",
+  "linear-gradient(135deg, #f43f5e 0%, #db2777 100%)",
+  "linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)",
 ];
 
 export function avatarGradient(name: string): string {

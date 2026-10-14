@@ -175,11 +175,11 @@ Per the brief ("please be very clear on any and all output you share with us"):
 
 ## 📦 Submission checklist
 
-- [ ] Public GitHub repo (this folder, without `*.png / *.pdf` brief assets, `node_modules`, `*.db`)
-- [ ] `.env.example` present (root + backend + frontend)
-- [ ] README with working setup steps (this file)
-- [ ] Meaningful git history (`git log --oneline`)
-- [ ] Video / screenshots linked above
+- [x] Public GitHub repo: [https://github.com/Vijay-1807/leadflow](https://github.com/Vijay-1807/leadflow)
+- [x] `.env.example` present (root + backend + frontend)
+- [x] README with working setup steps
+- [x] Meaningful git history (`git log --oneline`)
+- [x] Flow screenshots captured and documented in [`docs/`](./docs/)
 
 Suggested commits:
 ```

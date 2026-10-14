@@ -370,15 +370,15 @@ export default function Home() {
               </section>
             )}
 
-            <section className="mt-8">
-              <SectionHeader
-                label={todays.length > 0 || overdue.length > 0 ? "All leads" : "Leads"}
-                count={rest.length > 0 ? rest.length : filtered.length}
-              />
-              <div className="space-y-3">
-                {renderCards(rest.length > 0 || todays.length > 0 || overdue.length > 0 ? rest : filtered, "default")}
-              </div>
-            </section>
+            {rest.length > 0 && (
+              <section className="mt-8">
+                <SectionHeader
+                  label={todays.length > 0 || overdue.length > 0 ? "All leads" : "Leads"}
+                  count={rest.length}
+                />
+                <div className="space-y-3">{renderCards(rest, "default")}</div>
+              </section>
+            )}
           </>
         )}
 

@@ -95,6 +95,7 @@ cd backend
 cp .env.example .env        # optional
 pip install -r requirements.txt
 python seed.py              # seeds 7 leads
+pytest test_api.py          # run automated test suite (8 tests)
 uvicorn main:app --reload --port 8000
 ```
 
@@ -143,16 +144,22 @@ Re-run anytime: `python seed.py` (clears + reseeds).
 
 ---
 
-## 📸 Screenshots / video
+## 📸 Screenshots & Flow Previews
 
-Add your run-through here before submitting (required by the brief):
+The full working flow has been captured across 8 high-resolution screenshots in [`docs/`](./docs/):
 
-- `docs/lead-list.png` — list with Today's + Overdue pinned
-- `docs/timeline-dialog.png` — discussion history + add-note form
-- `docs/add-lead.png` — add-lead dialog
-- `docs/demo.mp4` — 60–90s click-through (list → filter → search → open timeline → add note with follow-up → status change → add lead)
+| View | Screenshot Preview |
+|---|---|
+| **1. Lead List & Pinned Follow-ups** | ![Lead List](docs/01-lead-list.png) |
+| **2. Lead Timeline Dialog** | ![Timeline Dialog](docs/02-timeline-dialog.png) |
+| **3. Update Status from Dialog** | ![Status Menu](docs/03-status-menu.png) |
+| **4. Log Discussion & Set Follow-up** | ![Composer Note](docs/04-composer-note.png) |
+| **5. Add New Lead Modal** | ![Add Lead](docs/05-add-lead.png) |
+| **6. Search & Status Filtering** | ![Search & Filter](docs/06-search-filter.png) |
+| **7. Mobile Responsive Layout** | ![Mobile List](docs/07-mobile-list.png) |
+| **8. Mobile Bottom-sheet Dialog** | ![Mobile Dialog](docs/08-mobile-dialog.png) |
 
-Quick capture: run Docker, open http://localhost:3000, use Win+Shift+S / OBS.
+*(Optional video walkthrough: record a quick 60–90s demo with Win+G / OBS and add to `docs/demo.mp4` or link a Loom / Google Drive link in your email).*
 
 ---
 

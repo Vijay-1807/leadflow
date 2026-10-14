@@ -2,7 +2,7 @@
 from datetime import datetime
 from typing import List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 VALID_STATUSES = ["New", "Contacted", "Qualified", "Proposal Sent", "Won", "Lost"]
 
@@ -13,14 +13,13 @@ class DiscussionCreate(BaseModel):
 
 
 class DiscussionOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     lead_id: int
     note: str
     follow_up_at: Optional[datetime]
     created_at: datetime
-
-    class Config:
-        from_attributes = True
 
 
 class LeadCreate(BaseModel):
@@ -38,6 +37,8 @@ class LeadUpdate(BaseModel):
 
 
 class LeadOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     name: str
     company: Optional[str]
@@ -49,9 +50,6 @@ class LeadOut(BaseModel):
     last_note: Optional[str] = None
     last_discussion_at: Optional[datetime] = None
     discussions_count: int = 0
-
-    class Config:
-        from_attributes = True
 
 
 class LeadDetailOut(LeadOut):

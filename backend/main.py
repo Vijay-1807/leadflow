@@ -105,9 +105,11 @@ def get_lead(lead_id: int, db: Session = Depends(get_db)):
         .order_by(models.Discussion.created_at.desc())
         .all()
     )
+    dump = out.model_dump() if hasattr(out, "model_dump") else out.dict()
+    val = getattr(schemas.DiscussionOut, "model_validate", schemas.DiscussionOut.from_orm)
     return schemas.LeadDetailOut(
-        **out.dict(),
-        discussions=[schemas.DiscussionOut.from_orm(d) for d in discussions],
+        **dump,
+        discussions=[val(d) for d in discussions],
     )
 
 
@@ -155,8 +157,8 @@ def add_discussion(lead_id: int, payload: schemas.DiscussionCreate, db: Session 
         lead.follow_up_at = payload.follow_up_at
     lead.updated_at = datetime.utcnow()
     db.commit()
-    db.refresh(disc)
-    return schemas.DiscussionOut.from_orm(disc)
+    val = getattr(schemas.DiscussionOut, "model_validate", schemas.DiscussionOut.from_orm)
+    return val(disc)
 
 
 @app.delete("/api/leads/{lead_id}", status_code=status.HTTP_204_NO_CONTENT)

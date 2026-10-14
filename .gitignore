@@ -1,6 +1,10 @@
 # brief assets (keep out of submission repo)
 *.png
 *.pdf
+!docs/*.png
+!docs/*.jpg
+!docs/*.webp
+!docs/*.mp4
 
 # python
 __pycache__/
